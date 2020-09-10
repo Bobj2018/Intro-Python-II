@@ -53,6 +53,7 @@ room['treasure'].s_to = room['narrow']
 
 player = Player(input("What is your name: "), room['outside'])
 
+player.announce()
 user = str(input(">>"))
 
 while user != "q":

@@ -7,26 +7,29 @@ class Player:
         self.name = name
         self.current_room = current_room
 
-    def announce(self, room):
-        print(f"You enter the {room.name}")
-        print(f"{room.description}")
+    def announce(self):
+        print(f"You enter the {self.current_room.name}")
+        print(f"{self.current_room.description}")
 
     def move(self, direction):
         if (direction == "n"):
             if (self.current_room.n_to):
                 self.current_room = self.current_room.n_to
-                self.announce(self.current_room)
+                self.announce()
         elif(direction == "s"):
             if (self.current_room.s_to):
                 self.current_room = self.current_room.s_to
-                self.announce(self.current_room)
+                self.announce()
         elif(direction == "e"):
             if (self.current_room.e_to):
                 self.current_room = self.current_room.e_to
-                self.announce(self.current_room)
+                self.announce()
         elif(direction == "w"):
             if (self.current_room.w_to):
                 self.current_room = self.current_room.w_to
-                self.announce(self.current_room)
+                self.announce()
         else:
             print("invalid command: please try again!")
+
+    def __repr__(self):
+        return f"Player({repr(self.name)}, {repr(self.current_room)})"
