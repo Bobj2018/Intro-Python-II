@@ -3,8 +3,6 @@
 
 class Room:
     def __init__(self, name, description, items = []):
-        super().__init__()
-
         self.name = name
         self.description = description
         self.items = items
@@ -14,7 +12,14 @@ class Room:
         self.e_to = None
         self.w_to = None
 
+    def get_item(self, item):
+        for i in self.items:
+            if(i.name.lower() == item.lower()):
+                return(i)
 
+    def remove_item(self, item):
+        self.items.remove(item)
+        print(self.items)
 
     def __repr__(self):
         return f"Room({repr(self.name)}, {repr(self.description)})"
