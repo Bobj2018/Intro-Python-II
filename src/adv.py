@@ -1,10 +1,11 @@
 from room import Room
+from player import Player
+from item import Item
 
 # Declare all the rooms
 
 room = {
-    'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+    'outside':  Room("Outside Cave Entrance", "North of you, the cave mount beckons", [Item("Torch", """An unlit torch sits at the base of the cave"""), Item("Key", """A unique key sits at the base of the cave""")]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -49,3 +50,13 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+
+player = Player(input("What is your name: "), room['outside'])
+
+player.announce()
+user = str(input(">>"))
+
+while user != "quit":
+    player.action(user)
+    user = str(input(">> "))
